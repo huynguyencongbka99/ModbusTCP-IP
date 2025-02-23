@@ -56,7 +56,8 @@ namespace Winsonic_ModbusTCP
             btnDI_7_Color.BackColor = SystemColors.Control;
             try
             {
-                using (TcpClient tcpClient = new TcpClient())
+                using (TcpClient tcpClient = new TcpClient()) // Khi dùng từ khóa using thì không Compiler sẽ tự động đóng và giải phóng bộ nhớ cấp phát TCPClient ở đây. Không cần đóng tcpClient. Nếu không dùng thì sau khi dùng xong sẽ phải đóng TCPClient nếu đã mở nó.
+                
                 {
                     tcpClient.Connect(IPAddress.Parse(ipAddress), port);
                     NetworkStream stream = tcpClient.GetStream();
